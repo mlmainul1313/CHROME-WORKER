@@ -1,0 +1,29 @@
+FROM python:3.10-slim
+
+# Install system dependencies needed for Chrome and Selenium
+RUN apt-get update && apt-get install -y \
+    wget \
+    gnupg \
+    unzip \
+    xvfb \
+    chromium \
+    chromium-driver \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Copy requirements and install
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy API code
+COPY . .
+
+# Set environment variable so SeleniumBase knows it's running headless
+ENV DISPLAY=:99
+
+# Create a start script to launch Xvfb and then the API
+RUN echo '#!/bin/bash\nrm -f /tmp/.X99-lock\nXvfb :99 -screen 0 1280x1024x24 &\npython chrome_api.py' > /app/start.sh
+RUN chmod +x /app/start.sh
+
+CMD ["/app/start.sh"]
