@@ -16,7 +16,7 @@ HEADERS = {
     "clienttype": "web"
 }
 
-BOT_TOKEN = "8284450010:AAEDxODh46GHFm01oQjVIipik1lSbs_qfMc"
+BOT_TOKEN = "8795125731:AAGtIs-9iWnprqDEP7T38t54H6gCaY04xIs"
 
 CLAIM_STATUSES = {}
 
